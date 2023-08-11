@@ -5,15 +5,6 @@ def arithmetic_arranger(problems):
     thirdline = ""
     fourthline = ""
 
-    def find_lenght(list):
-        biggest = 0
-        for item in list:
-
-            if len(str(item)) > biggest:
-                biggest = len(str(item))
-        operation_lenght = biggest
-        return operation_lenght
-    
     def largest_len(list):
         largest = 0
         for item in list:
@@ -49,14 +40,7 @@ def arithmetic_arranger(problems):
                 arranged_problems = 'Error: Operator must be '+' or '-'.'
                 return arranged_problems
             comps.append(problemanswer)
-            # print(comps)
-            # print(comps[0], comps[2], comps[3])
-            # print(find_lenght(comps))
-            # print(problemanswer)
 
-
-
-            # firstex = " " + " " * (len(compare_lens([comps[0], comps[2]])))
             firstex = " " + (str(first))            
             secondex = operation + " " + str(second)
             thirdex = "-" * largest_len([firstex, secondex, problemanswer])
