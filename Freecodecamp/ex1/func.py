@@ -40,13 +40,27 @@ def arithmetic_arranger(problems):
                 arranged_problems = 'Error: Operator must be '+' or '-'.'
                 return arranged_problems
             comps.append(problemanswer)
+         
 
-            firstex = " " + (str(first))            
-            secondex = operation + " " + str(second)
-            thirdex = "-" * largest_len([firstex, secondex, problemanswer])
+
+            if len(str(first)) > len(str(second)):
+                firstex = "  " + str(first)
+                secondex = operation + " " + (" " * (len(str(first)) - len(str(second)))) + str(second)
+                thirdex = "-" * len(firstex)
+            else:
+                firstex = "  " + (" " * (len(str(second)) - len(str(first)))) + str(first)
+                secondex = operation + " " + str(second)
+                thirdex = "-" * len(secondex)
+
+
+
+            # secondex = operation + " " + " " * (len(thirdex) - len(secondex)) + str(second)
+            # firstex = " " * (len(secondex) - len(firstex)) + firstex
+            # if len(firstex) == (len(thirdex) - 1):
+            #     firstex = " " + firstex
             
-            firstline = firstline + (" " * (len(thirdex) - len(firstex))  +   firstex) + "    "
-            secondline = secondline + secondex + "    "
+            firstline = firstline + firstex + "    "
+            secondline = secondline +  secondex + "    "
             thirdline = thirdline + thirdex + "    "
             fourthline = fourthline + (" " * (len(thirdex) - len(str(problemanswer)))) + str(problemanswer) + "    "
 

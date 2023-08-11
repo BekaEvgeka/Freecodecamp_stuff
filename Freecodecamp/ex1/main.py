@@ -1,2 +1,2 @@
 from func import arithmetic_arranger
-print(arithmetic_arranger(['10 + 333', '10 - 333', '10 + 2030']))
+print(arithmetic_arranger(["32 + 698", "3801 - 2", "45 + 43", "123 + 49"]))
