@@ -16,7 +16,6 @@ def add_time(starttime, time_to_add, startday = None):
         elif startday.lower() == "sunday":
             startday = 7
 
-    print(startday)
 
     time = starttime.split()
     timetoconvert = time[0]
@@ -41,15 +40,15 @@ def add_time(starttime, time_to_add, startday = None):
 
     dayspassed = finalhours // 24
     finalhours = finalhours % 24
-    if finalhours > 12:
-        finalhours = finalhours - 12
+   
+    if finalhours == 12:
         if startday == None:
             if dayspassed == 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM"+ " " + "(one day)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM"+ " " + "(next day)" )
             elif dayspassed > 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM" + " " + "(" +  str(dayspassed) + " days later)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM" + " " + "(" +  str(dayspassed) + " days later)" )
             else:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM")
+                return (str(finalhours) + ":" + str(finalminutes) + " PM")
         else:
             endday = startday + dayspassed
             while endday >= 7:
@@ -71,20 +70,56 @@ def add_time(starttime, time_to_add, startday = None):
             elif endday == 0:
                 endday = "Sunday"
             if dayspassed == 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(one day)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(next day)" )
             elif dayspassed > 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
             else:
-                print(str(finalhours) + ":" + str(finalminutes) + " PM, " + endday)
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday)
 
-    elif finalhours <= 12:
+    elif finalhours > 12:
+        finalhours = finalhours - 12
         if startday == None:
             if dayspassed == 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM"+ " " + "(one day)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM"+ " " + "(next day)" )
             elif dayspassed > 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM" + " " + "(" +  str(dayspassed) + " days later)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " PM" + " " + "(" +  str(dayspassed) + " days later)" )
             else:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM")
+                return (str(finalhours) + ":" + str(finalminutes) + " PM")
+        else:
+            endday = startday + dayspassed
+            while endday >= 7:
+                endday -= 7
+            if endday == 1:
+                endday = "Monday"
+            elif endday == 2:
+                endday = "Tuesday"
+            elif endday == 3:
+                endday = "Wednesday"
+            elif endday == 4:
+                endday = "Thursday"
+            elif endday == 5:
+                endday = "Friday"
+            elif endday == 6:
+                endday = "Saturday"
+            elif endday == 7:
+                endday = "Sunday"
+            elif endday == 0:
+                endday = "Sunday"
+            if dayspassed == 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(next day)" )
+            elif dayspassed > 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
+            else:
+                return (str(finalhours) + ":" + str(finalminutes) + " PM, " + endday)
+    elif finalhours == 0:
+        finalhours = 12
+        if startday == None:
+            if dayspassed == 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM"+ " " + "(next day)" )
+            elif dayspassed > 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM" + " " + "(" +  str(dayspassed) + " days later)" )
+            else:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM")
         else:
             endday = startday + dayspassed
             while endday >= 7:
@@ -107,11 +142,43 @@ def add_time(starttime, time_to_add, startday = None):
                 endday = "Sunday"
             
             if dayspassed == 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(one day)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(next day)" )
             elif dayspassed > 1:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
             else:
-                print(str(finalhours) + ":" + str(finalminutes) + " AM, " + endday)
-
-
-
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday)
+    elif finalhours < 12:
+        if startday == None:
+            if dayspassed == 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM"+ " " + "(next day)" )
+            elif dayspassed > 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM" + " " + "(" +  str(dayspassed) + " days later)" )
+            else:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM")
+        else:
+            endday = startday + dayspassed
+            while endday >= 7:
+                endday -= 7
+            if endday == 1:
+                endday = "Monday"
+            elif endday == 2:
+                endday = "Tuesday"
+            elif endday == 3:
+                endday = "Wednesday"
+            elif endday == 4:
+                endday = "Thursday"
+            elif endday == 5:
+                endday = "Friday"
+            elif endday == 6:
+                endday = "Saturday"
+            elif endday == 7:
+                endday = "Sunday"
+            elif endday == 0:
+                endday = "Sunday"
+            
+            if dayspassed == 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(next day)" )
+            elif dayspassed > 1:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday + " " + "(" +  str(dayspassed) + " days later)" )
+            else:
+                return (str(finalhours) + ":" + str(finalminutes) + " AM, " + endday)
