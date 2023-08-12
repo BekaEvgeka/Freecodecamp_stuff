@@ -1,19 +1,9 @@
-def arithmetic_arranger(problems):
+def arithmetic_arranger(problems, showanswers = False):
 
     firstline = ""
     secondline = ""
     thirdline = ""
     fourthline = ""
-
-    def largest_len(list):
-        largest = 0
-        for item in list:
-            if len(str(item)) > largest:
-                largest = len(str(item))
-        return largest
-
-        
-
 
     if len(problems) > 5:
        arranged_problems = 'Error: Too many problems.'
@@ -37,7 +27,7 @@ def arithmetic_arranger(problems):
                 operation = comps[1]
                 problemanswer = first - second
             else: 
-                arranged_problems = 'Error: Operator must be '+' or '-'.'
+                arranged_problems = "Error: Operator must be '+' or '-'."
                 return arranged_problems
             comps.append(problemanswer)
          
@@ -51,21 +41,18 @@ def arithmetic_arranger(problems):
                 firstex = "  " + (" " * (len(str(second)) - len(str(first)))) + str(first)
                 secondex = operation + " " + str(second)
                 thirdex = "-" * len(secondex)
-
-
-
-            # secondex = operation + " " + " " * (len(thirdex) - len(secondex)) + str(second)
-            # firstex = " " * (len(secondex) - len(firstex)) + firstex
-            # if len(firstex) == (len(thirdex) - 1):
-            #     firstex = " " + firstex
-            
+ 
             firstline = firstline + firstex + "    "
             secondline = secondline +  secondex + "    "
             thirdline = thirdline + thirdex + "    "
             fourthline = fourthline + (" " * (len(thirdex) - len(str(problemanswer)))) + str(problemanswer) + "    "
 
 
-        arranged_problems = (firstline + "\n" + secondline + "\n" + thirdline + "\n" + fourthline)
+            if showanswers:
+                arranged_problems = firstline + '\n' + secondline + '\n' + thirdline + '\n' + fourthline
+            else:
+                arranged_problems = firstline + '\n' + secondline + '\n' + thirdline
+
 
     return arranged_problems
 
