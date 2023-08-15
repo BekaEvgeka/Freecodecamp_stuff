@@ -1,4 +1,4 @@
-from budget import Category
+from budget import *
 food = Category("food")
 food.deposit(10, "Initial deposit")
 food.deposit(450)
@@ -9,8 +9,12 @@ auto = Category("auto")
 auto.deposit(1000, "deposit for new car")
 auto.withdraw(1500, "First payment")
 auto.transfer(150, food)
-print(food)
-print(auto)
+# print(food)
+# print(auto)
 food.transfer(300, auto)
-print(food)
-print(auto)
+
+entertainment = Category("entertainment")
+entertainment.deposit(5000, "Initial deposit")
+entertainment.withdraw(455, "Amusement park")
+
+create_spend_chart([food, auto, entertainment])
