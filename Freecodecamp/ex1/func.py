@@ -4,13 +4,14 @@ def arithmetic_arranger(problems, showanswers = False):
     secondline = ""
     thirdline = ""
     fourthline = ""
-
     if len(problems) > 5:
        arranged_problems = 'Error: Too many problems.'
        return arranged_problems
     else:
+        counter = len(problems)
         for problem in problems:
             comps = problem.split()
+            
             try:
                 first = int(comps[0])
                 second = int(comps[2])
@@ -41,13 +42,17 @@ def arithmetic_arranger(problems, showanswers = False):
                 firstex = "  " + (" " * (len(str(second)) - len(str(first)))) + str(first)
                 secondex = operation + " " + str(second)
                 thirdex = "-" * len(secondex)
- 
-            firstline = firstline + firstex + "    "
-            secondline = secondline +  secondex + "    "
-            thirdline = thirdline + thirdex + "    "
-            fourthline = fourthline + (" " * (len(thirdex) - len(str(problemanswer)))) + str(problemanswer) + "    "
-
-
+            if counter > 1:
+                firstline = firstline + firstex + "    "
+                secondline = secondline +  secondex + "    "
+                thirdline = thirdline + thirdex + "    "
+                fourthline = fourthline + (" " * (len(thirdex) - len(str(problemanswer)))) + str(problemanswer) + "    "
+            else:
+                firstline = firstline + firstex 
+                secondline = secondline +  secondex
+                thirdline = thirdline + thirdex
+                fourthline = fourthline + (" " * (len(thirdex) - len(str(problemanswer)))) + str(problemanswer)
+            counter -= 1
             if showanswers:
                 arranged_problems = firstline + '\n' + secondline + '\n' + thirdline + '\n' + fourthline
             else:
